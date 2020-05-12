@@ -1,0 +1,86 @@
+﻿@model TestForm.Models.RegistrationViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="hero-banner">
+    <div class="container">
+        <h3>Workplace Innovation Summit</h3><br />
+        <div>Take the next step</div>
+    </div>
+</section>
+<section class="about">
+    <div class="leftdiv" style="width: 60%; float:left">
+        <br /><br />
+        <h3>
+            Register your interest for any of the following experiences
+        </h3><br /><br />
+        <h4 class="heading"> 1. Build a business case with the Microsoft Technology Centre</h4>
+        <div class="row-content">
+            With our team of in-house and partner experts, the Microsoft Technology Centre (MTC) is a state-of-the-art centre located in the heart of Sydney, designed to help you accelerate transformation through engagements like strategy briefings, workshops, proof of concepts and even hackathons.
+        </div>
+        <h4 class="heading">2. Get hands-on with the Customer Immersion Experience</h4>
+        <div class="row-content">
+            The Microsoft Customer Immersion Experience is designed to help you and your colleagues become familiar with new ways of working by giving you an in-person guided tour of our new technologies and tools. This true-to-life experience takes you through common work-related scenarios such as working effectively in teams, being productive while mobile, using social networking to get work done, and collaborating in real time with colleagues and customers.
+        </div>
+        <h4 class="heading">3. Skill-up your IT team</h4>
+        <div class="row-content">
+            Building and deploying the technology that empowers modern workplaces and employees requires new technical skills and knowledge inside the IT team. This August, Microsoft is running Teamwork themed technical training events in Sydney and Melbourne for IT teams.
+        </div>
+        <h4 class="heading"> 4. Surface trial program</h4>
+        <div class="row-content">
+            Discover just how productive, collaborative and flexible your workplace could be. The Surface Device Evaluation Program lets you test drive the latest Surface devices in your workplace and explore the possibilities of Microsoft 365 first hand. Test Surface devices are delivered to your workplace for you to experience hands-on and collected at the end with an evaluation and follow-up discussion.
+        </div>
+
+        <h4 class="heading"> 5. Get customised advice and support for your team</h4>
+        <div class="row-content">
+            Every organisation has unique needs and operates at different stages of their transformation journey. Talk to one of the Microsoft team about your situation and we'll help create a customised journey to help with your next steps. We leverage a wide range of partners and resources to help you - whether it's the technology deployment side of things or developing and implementing change management andl employee adoption plans, we've got you covered.
+        </div>
+    </div>
+    <div class="rightdiv">
+        <h3 style="text-align:center;padding:10px;">Register your interest</h3><br />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form asp-action="Index" enctype="multipart/form-data">
+            <div class="row">
+                <input placeholder="First Name*" asp-for="FirstName" required/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div><div class="row">
+                <input placeholder="Last Name*" asp-for="LastName" required/>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div><div class="row">
+                <input placeholder="Organisation*" asp-for="Organisation" required/>
+                <span asp-validation-for="Organisation" class="text-danger"></span>
+            </div><div class="row">
+                <input placeholder="Work Email*" asp-for="WorkEmail" required/>
+                <span asp-validation-for="WorkEmail" class="text-danger"></span>
+            </div><div class="row">
+                <input placeholder="Phone Number*" asp-for="PhoneNumber" required/>
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            @if (ViewBag.optionsList != null)
+            {
+                foreach (var item in ViewBag.optionsList)
+                {
+                    <div class="row">
+                        <input type="checkbox" class="checkboxclass" name="Options" value="@item.Value" /> @item.Value
+                    </div>
+                }
+            }
+
+            <div class="row">
+
+                Optional: Please provide some additional context on your organisation's current workplace
+                situation and problems that you're looking to solve. (Max. 500 characters)
+
+            </div>
+            <div class="row">
+                <textarea cols="10" rows="2" asp-for="Comment" maxlength="500"> </textarea>
+            </div><div class="row">
+                <input placeholder="Industry*" asp-for="Industry" required/>
+                <span asp-validation-for="Industry" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Submit" class="btn-submit" />
+        </form>
+    </div>
+</section>
+

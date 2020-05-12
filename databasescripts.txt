@@ -1,0 +1,14 @@
+create database Interview;
+create table RegistrationForm
+(
+ Id int identity(1,1) primary key,
+ FirstName varchar(100),
+ LastName varchar(100),
+ Organisation varchar(100),
+ WorkEmail varchar(200),
+ PhoneNumber varchar(50),
+ Options varchar(500),
+ Comment varchar(500),
+ Industry varchar(200)
+
+)
